@@ -1,4 +1,38 @@
 /* CSS Website Mojorejo */
+/* Responsive setting */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .card {
+    flex-direction: column;
+  }
+
+  .card img {
+    margin: 0 0 10px 0;
+    width: 100%;
+  }
+
+  .nav a {
+    display: block;
+    margin: 8px 0;
+    padding: 12px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 1.8em;
+  }
+
+  .wrapper {
+    padding: 10px;
+  }
+}
 
 /* Reset dasar */
 * {
