@@ -1,251 +1,135 @@
-/* Responsive fix */
-body {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Website Desa Mojorejo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-img {
-  max-width: 100%;
-  height: auto;
-}
+  <!-- Background Overlay -->
+  <div class="background-overlay"></div>
 
-.container {
-  padding: 16px;
-}
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="Logo Desa" class="logo">
+    <h1>Desa Mojorejo</h1>
+    <p>Bersama Membangun Desa</p>
+  </header>
 
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.2em;
-  }
+  <!-- Navigasi -->
+  <nav>
+    <a href="#" class="active">Beranda</a>
+    <a href="#kegiatan">Kegiatan</a>
+    <a href="#pengurus">Pengurus</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
 
-  .container {
-    padding: 8px;
-  }
-}
+  <!-- Marquee Info -->
+  <div class="marquee">
+    <span>Selamat datang di website resmi Desa Mojorejo! — Dapatkan informasi terbaru tentang kegiatan dan pengumuman penting!</span>
+  </div>
 
-/* mojorejo.css */
+  <!-- Konten Utama -->
+  <main class="content">
+    <section id="kegiatan">
+      <h2>Galeri Kegiatan</h2>
+      <div class="kegiatan">
+        <div class="kegiatan-item">
+          <img src="kegiatan1.jpg" alt="Kegiatan 1">
+          <p>Gotong royong bersih desa</p>
+        </div>
+        <div class="kegiatan-item">
+          <img src="kegiatan2.jpg" alt="Kegiatan 2">
+          <p>Pelatihan UMKM untuk warga</p>
+        </div>
+        <!-- Tambahkan item lainnya sesuai kebutuhan -->
+      </div>
+    </section>
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    <section id="pengurus">
+      <h2>Struktur Pengurus</h2>
+      <div class="pengurus-grid">
+        <div class="pengurus-card">
+          <img src="kepala_desa.jpg" alt="Kepala Desa">
+          <p>Pak Surya - Kepala Desa</p>
+        </div>
+        <div class="pengurus-card">
+          <img src="sekretaris.jpg" alt="Sekretaris">
+          <p>Bu Rini - Sekretaris</p>
+        </div>
+        <!-- Tambahkan lainnya -->
+      </div>
+    </section>
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f5f5f5;
-  color: #222;
-  line-height: 1.6;
-}
+    <section id="kontak" class="kontak">
+      <h2>Kontak</h2>
+      <p><img src="icons/wa.png" alt="WA"> +62 812-3456-7890</p>
+      <p><img src="icons/email.png" alt="Email"> desa.mojorejo@email.com</p>
+      <p><img src="icons/lokasi.png" alt="Lokasi"> Jl. Raya Mojorejo No.1</p>
+      <button onclick="showPopup()">Ikuti Instagram Kami</button>
+    </section>
+  </main>
 
-/* Background Wallpaper */
-.background-overlay {
-  background-image: url('none'); /* Ganti sesuai gambar */
-  background-size: cover;
-  background-position: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.1;
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Desa Mojorejo. All rights reserved.
+  </footer>
 
-}
+  <!-- Tombol Scroll to Top -->
+  <button id="scrollTopBtn" onclick="scrollToTop()" title="Kembali ke atas">↑</button>
 
-/* Header */
-header {
-  background: url('p13.jpeg') center center / cover no-repeat;
-  color: white;
-  text-align: center;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 1rem;
-  background-position: center top;
+  <!-- Popup Instagram -->
+  <div class="popup-instagram" id="popupInstagram">
+    <div class="popup-box">
+      <p>Ikuti akun Instagram kami @mojorejo_official</p>
+      <button onclick="window.open('https://instagram.com/mojorejo_official')">Kunjungi</button>
+      <button class="close" onclick="closePopup()">Tutup</button>
+    </div>
+  </div>
 
-}
+  <!-- Script JS -->
+  <script>
+    // Tombol Scroll to Top
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function () {
+      scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
 
-header .logo {
-  width: 80px;
-  margin-bottom: 1rem;
-}
+    // Popup Instagram
+    function showPopup() {
+      document.getElementById("popupInstagram").style.display = "flex";
+    }
+    function closePopup() {
+      document.getElementById("popupInstagram").style.display = "none";
+    }
+  </script>
 
-/* Navigation */
-nav {
-  background-color: #555; /* abu-abu tua */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0.75rem;
-}
-
-
-nav a {
-  color: white;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: background 0.3s;
-  text-decoration: none;
-}
-
-nav a:hover {
-  background-color: #146c53;
-}
-nav a.active {
-  background-color: #333;
-  color: #fff;
-}
-
-
-/* Main Content */
-.content {
-  max-width: 1200px;
-  margin: auto;
-  padding: 2rem 1rem;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-}
-
-/* Judul Section */
-h2 {
-  color: #0c3b2e;
-  border-left: 5px solid #198754;
-  padding-left: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Galeri Kegiatan */
-.kegiatan {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.kegiatan-item {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.kegiatan-item:hover {
-  transform: translateY(-6px);
-}
-
-.kegiatan-item img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
-
-.kegiatan-item p {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: center;
-  color: #333;
-}
-
-/* Pengurus & Anggota */
-.pengurus-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.pengurus-card {
-  background: #fff;
-  padding: 1rem;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.pengurus-card img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-bottom: 0.5rem;
-  object-fit: cover;
-}
-
-/* Kontak */
-.kontak p {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.8rem;
-}
-
-.kontak img {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-}
-
-/* Marquee */
-.marquee {
-  background-color: #212529;
-  color: #ffc107;
-  font-weight: bold;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-
-/* Footer */
-footer {
-  background: #0c3b2e;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-
-.popup-instagram {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.popup-instagram .popup-box {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 300px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
-.popup-instagram .popup-box button {
-  margin: 10px 5px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.popup-instagram .popup-box button:first-child {
-  background-color: #E1306C;
-  color: white;
-}
-
-.popup-instagram .popup-box .close {
-  background-color: #ccc;
-}
+  <!-- Tambahkan gaya tombol scroll -->
+  <style>
+    #scrollTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      z-index: 100;
+      background-color: #146c53;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    #scrollTopBtn:hover {
+      background-color: #0c3b2e;
+    }
+  </style>
+</body>
+</html>
