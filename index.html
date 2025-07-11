@@ -246,16 +246,45 @@
       }
     }
   </script>
-
-  <!-- Tombol Trigger -->
-<button onclick="document.getElementById('popup').style.display='block'" style="position: fixed; bottom: 10px; right: 10px; background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 8px;">Privacy Policy</button>
-
-<!-- Popup Box -->
-<div id="popup" style="display: none; position: fixed; bottom: 50px; right: 10px; background: white; border: 1px solid #ccc; padding: 20px; width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.2); border-radius: 10px; z-index: 999;">
+<!-- Privacy Policy Popup -->
+<div id="privacyPopup" style="display: none; position: fixed; bottom: 20px; right: 20px; background: white; border: 1px solid #ccc; padding: 20px; width: 320px; box-shadow: 0 0 10px rgba(0,0,0,0.3); border-radius: 10px; z-index: 999;">
   <h3>Kebijakan Privasi</h3>
-  <p>Website ini tidak mengumpulkan data pribadi secara otomatis. Jika Anda mengirimkan tugas untuk dipublikasikan, Anda menyetujui bahwa tugas tersebut dapat ditampilkan secara publik. Kami tidak membagikan data apa pun ke pihak ketiga.</p>
-  <button onclick="document.getElementById('popup').style.display='none'" style="margin-top: 10px; background: #28a745; color: white; border: none; padding: 8px 12px; border-radius: 6px;">Saya Mengerti</button>
+  <p>Website ini tidak mengumpulkan data pribadi secara otomatis. Dengan mengirimkan tugas untuk dipublikasikan, Anda menyetujui bahwa tugas tersebut dapat ditampilkan secara publik. Kami tidak membagikan data ke pihak ketiga.</p>
+  <button onclick="acceptPrivacy()" style="margin-top: 10px; background: #28a745; color: white; border: none; padding: 8px 12px; border-radius: 6px;">Saya Mengerti</button>
 </div>
+
+<script>
+  function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  }
+
+  function getCookie(name) {
+    let cname = name + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i].trim();
+      if (c.indexOf(cname) === 0) {
+        return c.substring(cname.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  function acceptPrivacy() {
+    setCookie("privacyAccepted", "true", 365);
+    document.getElementById("privacyPopup").style.display = "none";
+  }
+
+  window.onload = function() {
+    if (getCookie("privacyAccepted") !== "true") {
+      document.getElementById("privacyPopup").style.display = "block";
+    }
+  };
+</script>
 
 
 </body>
